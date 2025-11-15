@@ -1,0 +1,134 @@
+@font-face {
+    font-family: 'Momo_Trust';
+    font-size: medium;
+    font-weight: normal;
+    font-style: light;
+    src: url('../fonts/Momo_Trust_Display/MomoTrustDisplay-Regular.woff2') format('woff2');
+    font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(255, 150, 43);
+}
+
+h1 {
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: normal;
+    font-style: light;
+
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(133, 71, 7);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+h2 {
+    background-color:rgb(75, 39, 4);
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+    width:fit-content;
+}
+
+section {
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: light;
+    border-style: solid;
+    background-color:rgb(133, 71, 7);
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+    width:fit-content;
+
+}
+
+nav {
+    width:fit-content;
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: bold;
+    border-style: solid;
+    background-color:rgb(133, 71, 7);
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(231, 43, 43);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    
+}
+
+a:hover {
+    cursor: pointer;
+    text-align: center;
+    color: rgb(255, 0, 0);
+    margin: 10px;
+    background-color:rgb(49, 22, 22);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    
+}
+
+
+img {
+    margin: 10px;
+    width: 800px;
+    height: 556px;
+
+}
+
+table {
+    border-collapse: collapse;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(97, 110, 110);
+}
+
+td {
+    text-align: center;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(97, 110, 110);
+}
+
+footer {
+    padding: 30px;
+    min-height: 200px;
+    background-color: black;
+    border-radius: 8px;
+}
+
+p {
+    color: white;
+
+}
