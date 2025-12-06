@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" , lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css_files/craft_a_lunch.css">
+        <title>Food Construct</title>
+    </head>
+    <body>
+        <header>
+            <h1>Food Construct</h1>
+                <nav>
+                    <a href="..\html_files\main_window.html"> About us </a>
+                    <a class="button_chosen"> Create lunch </a>
+                    <a> Orders </a>
+                    <a> Contacts </a>
+                </nav>
+        </header>
+
+        <section>
+                <h2> Choose a soup </h2>
+        </section>
+        
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container">
+                <div class="food_card">
+                    <img src="../recources/Images/foods/pumpkin-and-cheese-soup-top-view-image.jpg">
+                    <section>
+                        <p>Pumpkin and cheese soup</p>
+                        <p>199rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+                <div class="food_card">
+                    <img src="../recources/Images/foods/tomato-soup.jpg">
+                    <section>
+                        <p>Tomato soup</p>
+                        <p>209rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+                <div class="food_card">
+                    <img src="../recources/Images/foods/mushroom-soup.jpg">
+                    <section>
+                        <p>Mushroom soup</p>
+                        <p>199rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+            </div>                
+
+        </section>
+
+        <section>
+                <h2> Choose a main dish </h2>
+        </section>
+        
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container">
+                <div class="food_card">
+                    <img src="..\recources\Images\foods\Sashlik.jpg">
+                    <section>
+                        <p>Sashlik</p>
+                        <p>400rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+                <div class="food_card">
+                    <img src="../recources/Images/foods/Soba.jpg">
+                    <section>
+                        <p>Soba noodles</p>
+                        <p>249rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+                <div class="food_card">
+                    <img src="../recources/Images/foods/Rice.jpg">
+                    <section>
+                        <p>Rice`n veges</p>
+                        <p>209rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+            </div>                
+
+        </section>
+
+        <section>
+                <h2> Choose a drink </h2>
+        </section>
+        
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container">
+                <div class="food_card">
+                    <img src="../recources/Images/drinks/coffee.jpg">
+                    <section>
+                        <p>Black coffee</p>
+                        <p>99rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+                <div class="food_card">
+                    <img src="../recources/Images/drinks/cola.jpg">
+                    <section>
+                        <p>Cola</p>
+                        <p>89rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+                <div class="food_card">
+                    <img src="../recources/Images/drinks/beer.jpg">
+                    <section>
+                        <p>Beer</p>
+                        <p>119rub.</p>
+                    </section>
+                    <a class="add_to_lunch_button">Add to lunch</a>
+                </div>
+                
+            </div>                
+
+        </section>
+
+        <section style="justify-self: center;">
+            <h1>
+                Order
+            </h1>
+            
+            <form action="/submit" method="POST">
+
+                <nav class="create_order">
+                    
+                    <div>
+
+                        <h2>
+                            Your order:
+                        </h2>
+
+                        <div>
+                            <label for="choose_soup"> Choose a soup: </label>
+                            <select id="choose_soup" name="choose_soup">
+                                <option value="" selected disabled>Choose...</option>
+                                <option value="Gaspacho">Gaspacho</option>
+                                <option value="mushroom_soup">Mushroom soup</option>
+                                <option value="norwegian_soup">Norwegian soup</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="choose_main_dish"> Choose a main dish: </label>
+                            <select id="choose_main_dish" name="choose_main_dish">
+                                <option value="" selected disabled>Choose...</option>
+                                <option value="lasagna">Lasagna</option>
+                                <option value="tuna_salad">Tuna salad</option>
+                                <option value="shrimp_pasta">Shrimp pasta</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="choose_drink"> Choose a drink: </label>
+                            <select id="choose_drink" name="choose_drink">
+                                <option value="" selected disabled>Choose...</option>
+                                <option value="cappuccino">Cappuccino</option>
+                                <option value="greentea">Green tea</option>
+                                <option value="orange_juice">Orange juice</option>
+                            </select>
+                        </div>
+
+                        <textarea rows="10" cols="50" placeholder="Write something..."></textarea>
+                    </div>
+                    
+                    <div> 
+                        <h2>
+                            Your data:
+                        </h2>
+                    
+                        <div>
+                            <label for="name">Your name:</label>
+                            <input type="text" placeholder="Enter the name..." id="name" class="text_input" required>
+                        </div>
+
+                        <div>
+                            <label for="last_name">Your last name:</label>
+                            <input type="text" placeholder="Enter the last name..." id="last_name" class="text_input" required>
+                        </div>
+
+                        <div>
+                            <label for="father_name">Your fathers name:</label>
+                            <input type="text" placeholder="Enter the father`s name..." id="father_name" class="text_input" required>
+                        </div>
+
+                        <div>
+                            <label for="receive">Receive news about discounts and promotions</label>
+                            <input type="checkbox"  id="receive" checked>
+                        </div>
+
+                        <div>
+                            <label for="email">Email</label>
+                            <input type= "email" class="text_input" placeholder="Enter your email..." id="email" required>
+                        </div>
+
+                        <div>
+                            <label for="deliver_address">Deliver address</label>
+                            <input type="text" class="text_input" placeholder="Enter address..." id="deliver_address" required>
+                        </div>
+
+                        <div>
+                            <label for="deliver_address" style="font-style: italic;"> "Deliver only in Moscow"</label>
+                        </div>
+
+                        <div>
+
+                            <label for="delivery_time">Delivery time</label>
+                            <div>
+                                <input type="radio" class="text_input" name="delivery_time" value="asap" style="background: orange;" checked> As soon as possible
+                            </div>
+
+                            <div>
+                                <input type="radio" class="text_input" name="delivery_time" value="specified"> At the time
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <label for="delivery_time">Enter deliver time</label>
+                            <input type="time" class="text_input" id="delivery_time">
+                        </div>
+
+                        <div>
+                            <label for="delivery_time" style="font-style: italic;"> "Available from 7:00 to 23:00"</label>
+                        </div>
+
+                        <div>
+                            <button type="reset" class="button">Clear</button>
+                            <button type="submit" class="button">Submit</button>
+                        </div>
+
+                    </div>
+               
+                </nav>
+
+            </form>
+            
+        </section>
+        
+        <footer id="contacts">
+        <p> Call us: </p>
+        <p> +2 383 292 14 87 - Manager</p>
+        <p>All rights reserved.</p>
+        </footer>
+
+    </body>
+
+
+
+</html>
