@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" , lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="../css_files/craft_a_lunch.css">
+        <title>Food Construct</title>
+    </head>
+    <body>
+        <header>
+            <h1>Food Construct</h1>
+                <nav> <a href="..\html_files\main_window.html"> About us </a>
+                    <a class="button_chosen"> Create lunch </a>
+                    <a> Orders </a>
+                    <a> Contacts </a>
+                </nav>
+        </header>
+
+        <section> <h2> Choose a soup </h2> 
+            <div class="filters-container" id="soup_filters"></div>
+        </section>
+        
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container" id="soup_container">
+            </div>
+        </section>
+
+        <section> 
+            <h2> Choose a main dish </h2>
+            <div class="filters-container" id="main_dish_filters"></div>
+        </section>
+
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container" id="main_dish_container">
+            </div>
+        </section>
+
+        <section> 
+            <h2> Choose a salad or starter </h2>
+            <div class="filters-container" id="starter_filters"></div>
+        </section>
+
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container" id="starter_container">
+            </div>
+        </section>
+
+        <section> 
+            <h2> Choose a drink </h2>
+            <div class="filters-container" id="drink_filters"></div>
+        </section>
+
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container" id="drink_container">
+            </div>
+        </section>
+        
+        <section> 
+            <h2> Choose a dessert </h2>
+            <div class="filters-container" id="dessert_filters"></div>
+        </section>
+
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container" id="dessert_container">
+            </div>
+        </section>
+
+        <section> 
+            <h2> Additives (optional) </h2>
+        </section>
+
+        <section style="width: fit-content; justify-items: center; justify-self: center;">
+            <div class="grid_container" id="additive_container">
+            </div>
+        </section>
+
+        <section>
+            <h2>Доступные для заказа комбо</h2>
+            <div class="combos-container">
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/soup.png" alt="Суп">
+                        <p>Суп</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/main_dish.png" alt="Главное блюдо">
+                        <p>Главное блюдо</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/starter.png" alt="Салат">
+                        <p>Салат</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/drink.png" alt="Напиток">
+                        <p>Напиток</p>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/soup.png" alt="Суп">
+                        <p>Суп</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/main_dish.png" alt="Главное блюдо">
+                        <p>Главное блюдо</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/drink.png" alt="Напиток">
+                        <p>Напиток</p>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/soup.png" alt="Суп">
+                        <p>Суп</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/starter.png" alt="Салат">
+                        <p>Салат</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/drink.png" alt="Напиток">
+                        <p>Напиток</p>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/main_dish.png" alt="Главное блюдо">
+                        <p>Главное блюдо</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/starter.png" alt="Салат">
+                        <p>Салат</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/drink.png" alt="Напиток">
+                        <p>Напиток</p>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/main_dish.png" alt="Главное блюдо">
+                        <p>Главное блюдо</p>
+                    </div>
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/drink.png" alt="Напиток">
+                        <p>Напиток</p>
+                    </div>
+                </div>
+
+                <div class="combo-item">
+                    <div class="combo-dish">
+                        <img src="../recources/Images/combos/dessert.png" alt="Десерт">
+                        <p>Десерт</p>
+                        <p class="dessert-note">(Можно добавить к любому заказу)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section> 
+            <form action="https://httpbin.org/post" method="post" id="order_form">
+                <h2>Order form</h2>
+                
+                <div class="create_order" style="margin-bottom: 20px;">
+                    <h3>Ваш заказ</h3>
+                    <div id="order_summary">
+                        </div>
+                </div>
+
+                <div class="create_order">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" class="text_input" id="name" name="name" placeholder="Name" required>
+                    </div>
+                    
+                    <div>
+                        <label for="number">Phone number</label>
+                        <input type="tel" class="text_input" id="number" name="phone_number" placeholder="Phone number" required>
+                    </div>
+
+                    <div>
+                        <label for="address">Address</label>
+                        <input type="text" class="text_input" id="address" name="address" placeholder="Address" required>
+                    </div>
+
+                    <div>
+                        <label for="comments">Comments for the order</label>
+                        <textarea name="comments" id="comments" cols="30" rows="5" placeholder="Special requests, allergies, etc."></textarea>
+                    </div>
+
+                    <div>
+                        <label for="delivery_time_select">Delivery time</label>
+                        <div>
+                            <input type="radio" class="text_input" name="delivery_option" value="asap" style="background: orange;" checked> As soon as possible
+                        </div>
+
+                        <div>
+                            <input type="radio" class="text_input" name="delivery_option" value="specified"> At the time
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <label for="delivery_time">Enter deliver time</label>
+                        <input type="time" class="text_input" id="delivery_time" name="delivery_time_specific">
+                    </div>
+
+                    <div>
+                        <label for="delivery_time" style="font-style: italic;"> "Available from 7:00 to 23:00"</label>
+                    </div>
+
+                    <div>
+                        <button type="reset" class="button">Clear</button>
+                        <button type="submit" class="button">Submit</button>
+                    </div>
+
+                </div>
+            </form>
+        </section>
+        
+        <footer id="contacts">
+        <p> Call us: </p>
+        <p> +2 383 292 14 87 - Manager</p>
+        <p>All rights reserved.</p>
+        </footer>
+
+        <script src="../js_files/data.js"></script>
+        <script src="../js_files/script.js"></script>
+
+    </body>
+</html>
