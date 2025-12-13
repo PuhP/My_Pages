@@ -1,0 +1,295 @@
+@font-face {
+    font-family: 'Momo_Trust';
+    font-size: medium;
+    font-weight: normal;
+    font-style: light;
+    src: url('../fonts/Momo_Trust_Display/MomoTrustDisplay-Regular.woff2') format('woff2');
+    font-display: swap;
+}
+
+/* Добавляем ScienceGothic для кнопок, если он есть */
+@font-face {
+    font-family: 'ScienceGothic';
+    src: url('../fonts/ScienceGothic/ScienceGothic.woff2') format('woff2');
+    font-display: swap;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(255, 156, 43);
+}
+
+h1 {
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: normal;
+    font-style: light;
+
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(133, 71, 7);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+h2 {
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: bold;
+    font-style: light;
+
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(75, 39, 4); /* Темно-коричневый, сохранен */
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+nav {
+    display: flex; /* Сделано гибким для адаптивности */
+    flex-wrap: wrap; /* Разрешаем перенос ссылок на маленьких экранах */
+    justify-content: center; /* Центрируем ссылки */
+    background-color: rgb(231, 43, 43);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(231, 43, 43);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+a:hover {
+    cursor: pointer;
+    text-align: center;
+    color: rgb(255, 0, 0);
+    margin: 10px;
+    background-color:rgb(49, 22, 22);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.button_chosen {
+    background-color:rgb(75, 39, 4); /* Темно-коричневый для выбранной кнопки, сохранен */
+}
+
+section {
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: bold;
+    border-style: solid;
+    background-color:rgb(133, 71, 7);
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+
+/* СТИЛИ КАРТОЧЕК */
+.grid_container {
+    display: grid;
+    /* ПО УМОЛЧАНИЮ (ДЛЯ ПК): 3 КОЛОНКИ */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+    justify-items: center; 
+    padding: 10px;
+}
+
+.food_card {
+    background-color: rgba(211, 112, 0, 0.733);
+    margin: 10px;
+    /* ... стили шрифта ... */
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+    
+    /* ВОЗВРАЩАЕМ ФИКСИРОВАННУЮ ШИРИНУ ДЛЯ ПК, ОГРАНИЧЕННУЮ МАКСИМУМОМ */
+    width: 350px; 
+    max-width: 100%; /* Чтобы не вылезало за пределы экрана */
+    height: auto; 
+    min-height: 500px; 
+    
+    text-align: center;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+    transition: 0.3s;
+}
+
+.food_card:hover {
+    box-shadow: 0 0 10px 5px rgb(255, 255, 255);
+}
+
+.food_card img {
+    border-radius: 20px;
+    /* ВОЗВРАЩАЕМ ФИКСИРОВАННЫЙ РАЗМЕР ДЛЯ ПК */
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.337);
+}
+
+
+/* ФОРМА ЗАКАЗА */
+.create_order {
+    display: grid;
+    /* ПО УМОЛЧАНИЮ (ДЛЯ ПК): 2 КОЛОНКИ */
+    grid-template-columns: 1fr 1fr; 
+    background-color:  rgb(196, 111, 15);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+    margin: 15px;
+    padding: 15px;
+}
+
+
+/* АДАПТИВНОСТЬ: Медиазапросы для планшетов (экраны < 1200px) */
+@media (max-width: 1200px) {
+    .grid_container {
+        /* При ширине менее 1200px делаем 2 колонки */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+
+/* АДАПТИВНОСТЬ: Медиазапросы для мобильных телефонов (экраны < 600px) */
+@media (max-width: 600px) {
+    .grid_container {
+        /* При ширине менее 600px делаем 1 колонку */
+        grid-template-columns: 1fr; 
+    }
+    
+    .create_order {
+        /* Форма заказа также переходит в 1 колонку */
+        grid-template-columns: 1fr; 
+    }
+    
+    /* Уменьшаем отступы навигационных ссылок */
+    nav a {
+        margin: 5px;
+        padding: 5px;
+        font-size: 0.9em;
+    }
+
+    /* Делаем карточку гибкой, чтобы она занимала всю доступную ширину */
+    .food_card {
+        width: 95%; /* Занимает почти всю ширину контейнера */
+        margin: 10px auto; /* Центрируем */
+    }
+    
+    /* Изображение внутри карточки занимает всю ширину */
+    .food_card img {
+        width: 100%;
+        max-width: 300px; /* Сохраняем ограничение */
+        min-width: 500px;
+    }
+}
+
+footer {
+    text-align: right;
+    padding: 30px;
+    min-height: 200px;
+    background-color: black;
+    border-radius: 8px;
+}
+
+p {
+    color: rgb(245, 218, 218);
+
+}
+
+select {
+    color: rgb(245, 218, 218);
+    background-color: rgb(255, 140, 64);
+    border-radius: 20px;
+    border-color: white;
+    padding: 5px;
+
+}
+
+.create_order {
+    background-color:  rgb(196, 111, 15);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+    margin: 15px;
+    padding: 15px;
+}
+
+textarea {
+    background-color:rgb(134, 78, 13);
+    border-radius: 20px;
+    padding: 10px;
+    color: rgb(245, 218, 218);
+}
+
+::placeholder {
+    color: rgb(245, 218, 218);
+    opacity: 1;
+}
+
+.text_input {
+    color: rgb(245, 218, 218);
+    background-color: rgb(255, 140, 64);
+    border-radius: 20px;
+    padding: 10px;
+    border-color: rgb(255, 140, 64);
+    outline: none;
+}
+
+.button {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    margin: 20px;
+    background-color:rgb(250, 141, 16);
+    border-radius: 15px;
+    border-color: rgb(245, 218, 218);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.add_to_lunch_button {
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(250, 141, 16);
+    border-radius: 15px;
+    border-color: rgb(245, 218, 218);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-style: solid;
+    border-width: 3px;
+    text-decoration: none;
+    display: inline-block; /* Чтобы кнопка правильно масштабировалась */
+}
