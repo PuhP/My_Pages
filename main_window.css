@@ -1,0 +1,209 @@
+@font-face {
+    font-family: 'Momo_Trust';
+    font-size: medium;
+    font-weight: normal;
+    font-style: light;
+    src: url('../fonts/Momo_Trust_Display/MomoTrustDisplay-Regular.woff2') format('woff2');
+    font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(255, 156, 43);
+}
+
+h1 {
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: normal;
+    font-style: light;
+
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(133, 71, 7);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+h2 {
+    /* Добавлены утерянные стили шрифта */
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: bold;
+    font-style: light;
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    /* Цвет заголовка - темно-коричневый */
+    background-color:rgb(75, 39, 4);
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+    width:fit-content;
+    /* Исправлено: центрируем h2, который имеет width: fit-content */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section {
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: bold;
+    border-style: solid;
+    background-color:rgb(133, 71, 7);
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* Переносим инлайновые стили section[style*="width: 500px"] в отдельный класс или селектор, 
+   но для простоты исправления работаем с вашим текущим CSS. */
+section[style*="width: 500px"] {
+    /* Эти стили были скопированы из секции, но они дублировали стили section, 
+       оставим только нужные для центрирования и адаптивности. */
+    max-width: 90%; 
+    width: 500px !important; /* Устанавливаем фиксированную ширину для ПК */
+    margin: 0 auto 8px auto !important; 
+    
+    /* Удаляем дублирующие стили section, чтобы избежать конфликтов. */
+    /* ... color, font-family, background-color и т.д. ... */
+}
+
+nav {
+    /* АДАПТИВНОСТЬ: Удаляем width:fit-content и делаем меню гибким */
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    
+    /* Остальные стили nav */
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: bold;
+    border-style: solid;
+    background-color:rgb(133, 71, 7);
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 10px;
+
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(231, 43, 43);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    
+}
+
+a:hover {
+    cursor: pointer;
+    text-align: center;
+    color: rgb(255, 0, 0);
+    margin: 10px;
+    background-color:rgb(49, 22, 22);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    
+}
+
+
+img {
+    margin: 10px auto; /* Центрируем изображение */
+    /* ВОЗВРАЩАЕМ ФИКСИРОВАННУЮ ШИРИНУ ДЛЯ ПК (как в предыдущей версии) */
+    width: 800px;
+    height: auto; /* Высота подстраивается */
+    max-width: 100%; /* Ограничиваем максимальный размер */
+    display: block; /* Убираем лишние отступы */
+
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(97, 110, 110);
+}
+
+td {
+    text-align: center;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(97, 110, 110);
+}
+
+footer {
+    text-align: right;
+    padding: 30px;
+    min-height: 200px;
+    background-color: black;
+    border-radius: 8px;
+}
+
+p {
+    color: rgb(245, 218, 218);
+
+}
+
+.button_chosen {
+    cursor: pointer;
+    /* ИСПРАВЛЕНИЕ: Это стили для :hover. Для .button_chosen используем стандартный цвет. */
+    background-color:rgb(75, 39, 4); /* Темно-коричневый для выбранной кнопки */
+    color: rgb(245, 218, 218);
+    /* Удалены дублирующие margin, padding и т.д. */
+    border-radius: 8px;
+}
+
+/* АДАПТИВНОСТЬ: Медиазапрос для главного изображения и таблицы */
+@media (max-width: 850px) {
+    img {
+        width: 90%; /* Сжимаем изображение на планшетах */
+        height: auto; 
+    }
+    
+    section[style*="width: 500px"] {
+        width: 90% !important; /* Делаем секцию с таблицей гибкой */
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Сжимаем отступы и размеры для лучшего отображения */
+    
+    /* Уменьшаем отступы навигационных ссылок */
+    nav a {
+        margin: 5px;
+        padding: 5px;
+        font-size: 0.9em;
+    }
+
+    /* Уменьшаем размер шрифта таблицы, чтобы она поместилась */
+    table {
+        font-size: 0.85em; 
+    }
+}
+/* ИСПРАВЛЕНИЕ: Удалена лишняя закрывающая скобка '}' */

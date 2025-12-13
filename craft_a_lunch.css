@@ -1,0 +1,404 @@
+@font-face {
+    font-family: 'Momo_Trust';
+    font-size: medium;
+    font-weight: normal;
+    font-style: light;
+    src: url('../fonts/Momo_Trust_Display/MomoTrustDisplay-Regular.woff2') format('woff2');
+    font-display: swap;
+}
+
+/* Добавляем ScienceGothic для кнопок, если он есть */
+@font-face {
+    font-family: 'ScienceGothic';
+    src: url('../fonts/ScienceGothic/ScienceGothic.woff2') format('woff2');
+    font-display: swap;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(255, 156, 43);
+}
+
+h1 {
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: normal;
+    font-style: light;
+
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(133, 71, 7);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+h2 {
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: normal;
+    font-style: light;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(75, 39, 4);
+    border-radius: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+h3 {
+    color: rgb(75, 39, 4);
+}
+
+header {
+    margin: 10px;
+}
+
+section {
+    margin: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'ScienceGothic';
+    color: rgb(231, 43, 43);
+    margin: 5px;
+    background-color: rgb(245, 218, 218);
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.button_chosen {
+    background-color: rgb(75, 39, 4);
+    color: rgb(245, 218, 218);
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 10px;
+}
+
+.food_card {
+    background-color: rgb(245, 218, 218);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+    cursor: pointer; /* Делаем карточку кликабельной */
+}
+
+.food_card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.food_card section {
+    border: 3px solid rgb(231, 43, 43); /* Красная рамка */
+    box-shadow: 0 0 15px 7px rgba(231, 43, 43, 0.8); /* Красная тень */
+    text-align: center;
+    margin: 5px 0;
+    color: rgb(75, 39, 4);
+}
+
+.add_to_lunch_button {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    background-color: rgb(250, 141, 16);
+    border-radius: 20px;
+    border-color: white;
+    padding: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+}
+
+.create_order {
+    background-color:  rgb(196, 111, 15);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+    margin: 15px;
+    padding: 15px;
+}
+
+textarea {
+    background-color:rgb(134, 78, 13);
+    border-radius: 20px;
+    padding: 10px;
+    color: rgb(245, 218, 218);
+}
+
+::placeholder {
+    color: rgb(245, 218, 218);
+    opacity: 1;
+}
+
+.text_input {
+    color: rgb(245, 218, 218);
+    background-color: rgb(255, 140, 64);
+    border-radius: 20px;
+    padding: 10px;
+    border-color: rgb(255, 140, 64);
+    outline: none;
+}
+
+.button {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    background-color: rgb(250, 141, 16);
+    border-radius: 20px;
+    border-color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(231, 43, 43);
+}
+
+footer {
+    text-align: right;
+    padding: 30px;
+    min-height: 200px;
+    background-color: black;
+    border-radius: 8px;
+}
+
+p {
+    color: rgb(245, 218, 218);
+}
+
+/* --- СТИЛИ ФИЛЬТРОВ --- */
+
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0 20px 0;
+    padding: 10px;
+    background-color: rgb(75, 39, 4); 
+    border-radius: 8px;
+}
+
+.filter-button {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    margin: 5px;
+    background-color: rgb(250, 141, 16); 
+    border-radius: 15px;
+    border-color: rgb(245, 218, 218);
+    padding: 5px 15px;
+    border-style: solid;
+    border-width: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.filter-button.active {
+    background-color: rgb(231, 43, 43); 
+    border-color: rgb(255, 255, 255);
+}
+
+.filter-button:hover {
+    background-color: rgb(231, 43, 43); 
+    border-color: rgb(245, 218, 218);
+}
+
+
+/* --- СТИЛИ КОМБО ВАРИАНТОВ --- */
+.combos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки на ПК */
+    gap: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.combo-item {
+    background-color: rgba(211, 112, 0, 0.733);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex; 
+    justify-content: center;
+    align-items: flex-end;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+}
+
+.combo-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.combo-dish img {
+    width: 60px; 
+    height: 60px;
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.combo-dish p {
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+/* СТИЛИ ТРАНСФОРМАЦИИ ПРИ НАВЕДЕНИИ */
+.combo-dish:hover img {
+    transform: translateY(-5px) scale(1.1); /* Поднимается и увеличивается */
+}
+
+/* Стили для заметки о десерте */
+.dessert-note {
+    font-size: 0.8em; 
+    font-style: italic;
+    margin: 0;
+    line-height: 1.2;
+}
+
+
+/* --- СТИЛИ МОДАЛЬНОГО ОКНА (УВЕДОМЛЕНИЯ) --- */
+.notification-overlay {
+    position: fixed; /* Фиксированное положение (не меняется при скролле) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Поверх всех элементов */
+}
+
+.notification-box {
+    background-color: rgb(245, 218, 218); /* Светлый фон уведомления */
+    color: rgb(75, 39, 4); /* Темный текст */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+}
+
+.notification-box h3 {
+    font-family: 'Momo_Trust', sans-serif;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.notification-button {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    background-color: rgb(250, 141, 16); /* Оранжевый */
+    border-radius: 25px;
+    padding: 10px 30px;
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid rgb(250, 141, 16);
+    margin-top: 15px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.notification-button:hover {
+    background-color: rgb(75, 39, 4); /* Темно-коричневый */
+    color: rgb(255, 255, 255);
+    border-color: rgb(75, 39, 4);
+}
+
+/* Адаптивность для комбо */
+@media (max-width: 900px) {
+    .combos-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+    }
+}
+
+@media (max-width: 550px) {
+    .combos-container {
+        grid-template-columns: 1fr; /* 1 колонка на мобильных */
+    }
+}
+
+/* Адаптивность для карточек блюд */
+@media (max-width: 1200px) {
+    .grid_container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    .grid_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .grid_container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Стили для кнопки фильтра */
+.filters-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filter-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(245, 218, 218);
+    border-radius: 5px;
+    padding: 5px 15px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.filter-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.filter-button.active {
+    background-color: rgb(231, 43, 43);
+    font-weight: bold;
+}
+
+/* В .food_card, чтобы кнопка меняла текст, когда выбрана: */
+.food_card.selected .add_to_lunch_button {
+    background-color: rgb(231, 43, 43); /* Изменяем цвет кнопки при выборе */
+    border-color: rgb(231, 43, 43);
+}
