@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Заказы</title>
+
+  <link rel="stylesheet" href="../css_files/craft_a_lunch.css">
+  <link rel="stylesheet" href="../css_files/orders.css">
+</head>
+<body>
+  <header>
+    <h1>Food Construct</h1>
+    <nav>
+      <a href="../html_files/main_window.html">About us</a>
+      <a href="../html_files/craft_a_lunch.html">Create lunch</a>
+      <a href="../html_files/order_form.html">Оформить заказ</a>
+      <a class="button_chosen" href="../html_files/orders.html">Orders</a>
+      <a href="../html_files/main_window.html#contacts">Contacts</a>
+    </nav>
+  </header>
+
+  <main class="orders-page">
+    <section class="orders-head">
+      <h2>История заказов</h2>
+      <p class="orders-subtitle">Ниже — заказы текущего пользователя (сначала новые).</p>
+    </section>
+
+    <section class="orders-list-wrap">
+      <div id="orders_loading" class="orders-info">Загрузка заказов…</div>
+      <div id="orders_error" class="orders-info orders-info--error" style="display:none;"></div>
+
+      <div class="orders-table">
+        <div class="orders-row orders-row--head">
+          <div>#</div>
+          <div>Дата</div>
+          <div>Состав</div>
+          <div>Стоимость</div>
+          <div>Доставка</div>
+          <div>Действия</div>
+        </div>
+
+        <div id="orders_container"></div>
+      </div>
+
+      <div id="orders_empty" class="orders-info" style="display:none;">
+        У вас пока нет заказов.
+      </div>
+    </section>
+  </main>
+
+  <!-- Уведомления -->
+  <div id="toast" class="toast" style="display:none;"></div>
+
+  <!-- Модалка: Подробнее -->
+  <div class="modal-overlay" id="modal_view" style="display:none;">
+    <div class="modal">
+      <button class="modal__close" data-close="modal_view" aria-label="Закрыть">×</button>
+      <h3 class="modal__title">Заказ — подробнее</h3>
+      <div id="view_body" class="modal__body"></div>
+      <div class="modal__actions">
+        <button class="button" data-close="modal_view">Ок</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модалка: Редактирование -->
+  <div class="modal-overlay" id="modal_edit" style="display:none;">
+    <div class="modal">
+      <button class="modal__close" data-close="modal_edit" aria-label="Закрыть">×</button>
+      <h3 class="modal__title">Редактирование заказа</h3>
+
+      <form id="edit_form" class="edit-form">
+        <input type="hidden" id="edit_id" />
+
+        <label class="field">
+          <span>full_name</span>
+          <input class="text_input" type="text" id="edit_full_name" required />
+        </label>
+
+        <label class="field">
+          <span>email</span>
+          <input class="text_input" type="email" id="edit_email" required />
+        </label>
+
+        <label class="field">
+          <span>phone</span>
+          <input class="text_input" type="text" id="edit_phone" required />
+        </label>
+
+        <label class="field">
+          <span>delivery_address</span>
+          <input class="text_input" type="text" id="edit_delivery_address" required />
+        </label>
+
+        <label class="field">
+          <span>delivery_type</span>
+          <select class="text_input" id="edit_delivery_type" required>
+            <option value="now">now</option>
+            <option value="by_time">by_time</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>delivery_time (HH:MM)</span>
+          <input class="text_input" type="time" id="edit_delivery_time" />
+          <small class="hint">Нужно, если delivery_type=by_time (7:00–23:00).</small>
+        </label>
+
+        <label class="field">
+          <span>comment</span>
+          <textarea id="edit_comment" rows="4"></textarea>
+        </label>
+
+        <div class="modal__actions">
+          <button class="button" type="button" data-close="modal_edit">Отмена</button>
+          <button class="button" type="submit" id="btn_save">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модалка: Удаление -->
+  <div class="modal-overlay" id="modal_delete" style="display:none;">
+    <div class="modal">
+      <button class="modal__close" data-close="modal_delete" aria-label="Закрыть">×</button>
+      <h3 class="modal__title">Удалить заказ?</h3>
+      <div class="modal__body">
+        <p id="delete_text">Вы уверены, что хотите удалить заказ?</p>
+      </div>
+      <div class="modal__actions">
+        <button class="button" type="button" data-close="modal_delete">Отмена</button>
+        <button class="button" type="button" id="btn_delete_yes">Да</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js_files/orders.js"></script>
+</body>
+</html>

@@ -1,102 +1,106 @@
 <!DOCTYPE html>
-<html lang="en" , lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="stylesheet" href="../css_files/craft_a_lunch.css">
-        <title>Оформить заказ</title>
-        <link rel="stylesheet" href="../css_files/order_form.css"> 
-    </head>
-    <body>
-        <header>
-            <h1>Food Construct</h1>
-                <nav> <a href="..\html_files\main_window.html"> About us </a>
-                    <a href="..\html_files\craft_a_lunch.html"> Create lunch </a>
-                    <a class="button_chosen"> Оформить заказ </a> 
-                    <a> Orders </a>
-                    <a> Contacts </a>
-                </nav>
-        </header>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css_files/craft_a_lunch.css">
+  <link rel="stylesheet" href="../css_files/order_form.css">
+  <title>Оформить заказ</title>
+</head>
 
-        <section class="order-page-container">
-            
-            <div class="order-composition">
-                <h2>Состав заказа</h2>
-                <div id="dishes_list_container">
-                    <p id="empty_order_message" style="display: none;">
-                        Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу 
-                        <a href="../html_files/craft_a_lunch.html" style="background-color: transparent; color: rgb(255, 230, 0);">Собрать ланч</a>.
-                    </p>
-                </div>
-            </div>
+<body>
+<header>
+  <h1>Food Construct</h1>
+  <nav>
+    <a href="../html_files/main_window.html"> About us </a>
+    <a href="../html_files/craft_a_lunch.html"> Create lunch </a>
+    <a class="button_chosen"> Оформить заказ </a>
+    <a href="../html_files/orders.html"> Orders </a>
+    <a href="#contacts"> Contacts </a>
+  </nav>
+</header>
 
-            <form action="https://httpbin.org/post" method="post" id="order_form">
-                <h2>Оформление заказа</h2>
-                
-                <div class="order-form-grid">
-                    
-                    <div class="summary-block">
-                        <h3>Ваш заказ</h3>
-                        <div id="order_summary">
-                            </div>
-                    </div>
-                    
-                    <div class="input-block">
-                        <h3>Ваши данные</h3>
-                        <div>
-                            <label for="name">Имя</label>
-                            <input type="text" class="text_input" id="name" name="name" placeholder="Имя" required>
-                        </div>
-                        
-                        <div>
-                            <label for="number">Номер телефона</label>
-                            <input type="tel" class="text_input" id="number" name="phone_number" placeholder="Номер телефона" required>
-                        </div>
+<section class="order-page-container">
+  <div class="order-composition">
+    <h2>Состав заказа</h2>
+    <div id="dishes_list_container">
+      <p id="empty_order_message" style="display: none;">
+        Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу
+        <a href="../html_files/craft_a_lunch.html" style="background-color: transparent; color: rgb(255, 230, 0);">Собрать ланч</a>.
+      </p>
+    </div>
+  </div>
 
-                        <div>
-                            <label for="address">Адрес доставки</label>
-                            <input type="text" class="text_input" id="address" name="address" placeholder="Адрес" required>
-                            <p style="font-style: italic; font-size: 0.9em; margin-top: 5px; color: #fff;">Доставка осуществляется только по Москве</p>
-                        </div>
-                        
-                        <div>
-                            <label for="comments">Комментарии к заказу</label>
-                            <textarea name="comments" id="comments" cols="30" rows="5" placeholder="Особые пожелания, аллергии и т.д."></textarea>
-                        </div>
-                        
-                        <div>
-                            <label>Время доставки</label>
-                            <div>
-                                <input type="radio" class="radio_input" name="delivery_option" value="asap" checked> Как можно скорее
-                            </div>
+  <form action="https://httpbin.org/post" method="post" id="order_form">
+    <h2>Оформление заказа</h2>
 
-                            <div>
-                                <input type="radio" class="radio_input" name="delivery_option" value="specified"> К указанному времени
-                            </div>
-                        </div>
+    <div class="order-form-grid">
 
-                        <div>
-                            <label for="delivery_time">Укажите время</label>
-                            <input type="time" class="text_input" id="delivery_time" name="delivery_time_specific">
-                            <p style="font-style: italic; font-size: 0.9em; margin-top: 5px; color: #fff;">Доступное время: с 7:00 до 23:00</p>
-                        </div>
-                        
-                        <div class="form-buttons">
-                            <button type="reset" class="button">Очистить</button>
-                            <button type="submit" class="button" id="submit_order_button">Оправить</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </section>
-        
-        <footer id="contacts">
-        <p> Call us: </p>
-        <p> +2 383 292 14 87 - Manager</p>
-        <p>All rights reserved.</p>
-        </footer>
+      <div class="summary-block">
+        <h3>Ваш заказ</h3>
+        <div id="order_summary"></div>
+      </div>
 
-        <script src="../js_files/script.js"></script> 
-        <script src="../js_files/order_script.js"></script>
-    </body>
+      <div class="input-block">
+        <h3>Ваши данные</h3>
+
+        <div>
+          <label for="name">Имя</label>
+          <input type="text" class="text_input" id="name" name="name" placeholder="Имя" required>
+        </div>
+
+        <div>
+          <label for="number">Номер телефона</label>
+          <input type="tel" class="text_input" id="number" name="phone_number" placeholder="Номер телефона" required>
+        </div>
+
+        <div>
+          <label for="address">Адрес доставки</label>
+          <input type="text" class="text_input" id="address" name="address" placeholder="Адрес" required>
+          <p style="font-style: italic; font-size: 0.9em; margin-top: 5px; color: #fff;">Доставка осуществляется только по Москве</p>
+        </div>
+
+        <div>
+          <label for="comments">Комментарии к заказу</label>
+          <textarea name="comments" id="comments" cols="30" rows="5" placeholder="Особые пожелания, аллергии и т.д."></textarea>
+        </div>
+
+        <div>
+          <label>Время доставки</label>
+          <div>
+            <input type="radio" class="radio_input" name="delivery_option" value="asap" checked> Как можно скорее
+          </div>
+          <div>
+            <input type="radio" class="radio_input" name="delivery_option" value="specified"> К указанному времени
+          </div>
+        </div>
+
+         <label for="email">Email</label>
+  <input type="email" class="text_input" id="email" name="email" placeholder="name@example.com" required>
+</div>
+
+        <div>
+          <label for="delivery_time">Укажите время</label>
+          <input type="time" class="text_input" id="delivery_time" name="delivery_time_specific">
+          <p style="font-style: italic; font-size: 0.9em; margin-top: 5px; color: #fff;">Доступное время: с 7:00 до 23:00</p>
+        </div>
+
+        <div class="form-buttons">
+          <button type="reset" class="button">Очистить</button>
+          <button type="submit" class="button" id="submit_order_button">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+
+<footer id="contacts">
+  <p> Call us: </p>
+  <p> +2 383 292 14 87 - Manager</p>
+  <p>All rights reserved.</p>
+</footer>
+
+<script src="../js_files/script.js"></script>
+<script src="../js_files/order_script.js"></script>
+</body>
 </html>

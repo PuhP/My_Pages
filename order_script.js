@@ -1,265 +1,269 @@
-// js_files/order_script.js
-
 document.addEventListener('DOMContentLoaded', async () => {
-    
-    // API URL для загрузки данных (Должен быть тот же, что и в script.js)
-    const API_URL = 'https://edu.std-900.ist.mospolytech.ru/labs/api/dishes';
-    
-    const dishesListContainer = document.getElementById('dishes_list_container');
-    const emptyOrderMessage = document.getElementById('empty_order_message');
-    const orderSummaryElement = document.getElementById('order_summary');
-    const orderForm = document.getElementById('order_form');
-    const submitButton = document.getElementById('submit_order_button');
+  // ВСТАВЬ СВОЙ КЛЮЧ:
+  const API_KEY = "a0cd61c9-08ca-4666-adc5-cfa927d3e73b";
 
-    let allDishesData = [];
-    
-    // selectedDishes: { category: dish_object, ... }
-    let selectedDishes = {
-        soup: null,
-        main_dish: null,
-        starter: null,
-        drink: null,
-        dessert: null,
-        additive: null
+  const BASE_URL = "https://edu.std-900.ist.mospolytech.ru";
+  const DISHES_URL = `${BASE_URL}/labs/api/dishes`;
+  const ORDERS_URL = `${BASE_URL}/labs/api/orders`;
+
+  const dishesListContainer = document.getElementById('dishes_list_container');
+  const emptyOrderMessage = document.getElementById('empty_order_message');
+  const orderSummaryElement = document.getElementById('order_summary');
+
+  const orderForm = document.getElementById('order_form');
+  const submitButton = document.getElementById('submit_order_button');
+
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email'); // ДОБАВИЛИ
+  const phoneInput = document.getElementById('number');
+  const addressInput = document.getElementById('address');
+  const commentInput = document.getElementById('comments');
+  const deliveryTimeInput = document.getElementById('delivery_time');
+
+  let allDishesData = [];
+
+  let selectedDishes = {
+    soup: null,
+    main_dish: null,
+    starter: null,
+    drink: null,
+    dessert: null,
+    additive: null
+  };
+
+  function normalizeCategory(raw) {
+    const c = (raw || '').toLowerCase();
+    if (c === 'main_course' || c === 'main' || c === 'maincourse') return 'main_dish';
+    if (c === 'salad' || c === 'starter') return 'starter';
+    if (c === 'additives' || c === 'additive' || c === 'extra' || c === 'sauce') return 'additive';
+    return c;
+  }
+
+  function loadSelectedDishIds() {
+    try {
+      const storedData = localStorage.getItem('selectedDishes');
+      return storedData ? JSON.parse(storedData) : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function saveSelectedDishes() {
+    const idsToStore = {};
+    for (const category in selectedDishes) {
+      if (selectedDishes[category]) idsToStore[category] = selectedDishes[category].id;
+    }
+    localStorage.setItem('selectedDishes', JSON.stringify(idsToStore));
+  }
+
+  function removeDish(category) {
+    selectedDishes[category] = null;
+    saveSelectedDishes();
+    renderOrderComposition();
+    updateOrderSummary();
+  }
+
+  function createOrderDishCard(dish) {
+    const foodCard = document.createElement('div');
+    foodCard.className = 'food_card selected';
+
+    foodCard.innerHTML = `
+      <img src="${dish.image}" alt="${dish.name}">
+      <section>
+        <p>${dish.name}</p>
+        <p>${dish.price}₽</p>
+        <p style="font-size: 0.9em; font-style: italic;">${dish.count}</p>
+      </section>
+      <a class="add_to_lunch_button">Удалить</a>
+    `;
+
+    foodCard.querySelector('.add_to_lunch_button').addEventListener('click', (e) => {
+      e.preventDefault();
+      removeDish(dish._category);
+    });
+
+    return foodCard;
+  }
+
+  function renderOrderComposition() {
+    dishesListContainer.innerHTML = '';
+    let dishCount = 0;
+
+    const orderedCategories = ['soup', 'main_dish', 'starter', 'drink', 'dessert', 'additive'];
+    orderedCategories.forEach(category => {
+      const dish = selectedDishes[category];
+      if (dish) {
+        dishesListContainer.appendChild(createOrderDishCard(dish));
+        dishCount++;
+      }
+    });
+
+    emptyOrderMessage.style.display = dishCount === 0 ? 'block' : 'none';
+  }
+
+  function updateOrderSummary() {
+    let totalCost = 0;
+
+    const categoryTitles = {
+      soup: 'Суп',
+      main_dish: 'Главное блюдо',
+      starter: 'Салат/стартер',
+      drink: 'Напиток',
+      dessert: 'Десерт',
+      additive: 'Добавки'
     };
 
-    // ----------------------------------------------------
-    // 1. Утилиты для localStorage
-    // ----------------------------------------------------
+    let summaryHTML = '';
+    const orderedCategories = ['soup', 'main_dish', 'starter', 'drink', 'dessert', 'additive'];
 
-    /**
-     * Загружает выбранные ID блюд из localStorage.
-     */
-    function loadSelectedDishIds() {
-        try {
-            const storedData = localStorage.getItem('selectedDishes');
-            return storedData ? JSON.parse(storedData) : {};
-        } catch (e) {
-            console.error("Ошибка при загрузке данных из localStorage", e);
-            return {};
-        }
+    orderedCategories.forEach(category => {
+      const dish = selectedDishes[category];
+      summaryHTML += `<p style="font-weight: bold; margin-top: 10px;">${categoryTitles[category]}</p>`;
+      if (dish) {
+        summaryHTML += `<p>${dish.name} ${dish.price}₽</p>`;
+        totalCost += dish.price;
+      } else {
+        summaryHTML += `<p style="font-style: italic;">Не выбрано</p>`;
+      }
+    });
+
+    summaryHTML += `
+      <p style="font-weight: bold; margin-top: 20px;">Стоимость заказа</p>
+      <p style="font-size: 1.2em; font-weight: bold;">${totalCost}₽</p>
+    `;
+
+    orderSummaryElement.innerHTML = summaryHTML;
+
+    // кнопка активна только при валидном комбо
+    const validationError = window.checkComboValidity ? window.checkComboValidity(selectedDishes) : "Ошибка валидации";
+    submitButton.disabled = validationError !== null;
+    submitButton.textContent = validationError === null ? 'Отправить' : `Отправить (Некорректный заказ)`;
+  }
+
+  async function fetchJson(url, options = {}) {
+    const res = await fetch(url, options);
+    const text = await res.text();
+    let data = null;
+    try { data = text ? JSON.parse(text) : null; } catch { data = text; }
+    if (!res.ok) {
+      const msg = data?.error || `HTTP ${res.status}`;
+      throw new Error(msg);
+    }
+    return data;
+  }
+
+  function withKey(url) {
+    const u = new URL(url);
+    u.searchParams.set("api_key", API_KEY);
+    return u.toString();
+  }
+
+  function restoreSelectedDishes() {
+    const selectedIds = loadSelectedDishIds();
+    for (const cat in selectedDishes) selectedDishes[cat] = null;
+
+    allDishesData.forEach(dish => {
+      const category = normalizeCategory(dish.category);
+      dish._category = category;
+
+      if (selectedIds[category] === dish.id) {
+        selectedDishes[category] = dish;
+      }
+    });
+  }
+
+  function buildOrderPayload() {
+    const deliveryOption = document.querySelector('input[name="delivery_option"]:checked')?.value;
+    const delivery_type = deliveryOption === "specified" ? "by_time" : "now";
+
+    const payload = {
+      full_name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      delivery_address: addressInput.value.trim(),
+      delivery_type,
+      comment: commentInput.value.trim() || null,
+
+      // блюдо/комбо:
+      soup_id: selectedDishes.soup?.id ?? null,
+      main_course_id: selectedDishes.main_dish?.id ?? null,
+      salad_id: selectedDishes.starter?.id ?? null,
+      drink_id: selectedDishes.drink?.id ?? null,
+      dessert_id: selectedDishes.dessert?.id ?? null,
+    };
+
+    // additives — обычно не отдельное поле в API, поэтому не отправляем
+    // (Если у вас в методичке есть additive_id — скажи, добавлю)
+
+    if (delivery_type === "by_time") {
+      payload.delivery_time = deliveryTimeInput.value; // "HH:MM"
     }
 
-    /**
-     * Сохраняет выбранные ID блюд в localStorage.
-     */
-    function saveSelectedDishes() {
-        const idsToStore = {};
-        for (const category in selectedDishes) {
-            if (selectedDishes[category]) {
-                idsToStore[category] = selectedDishes[category].id; 
-            }
-        }
-        try {
-            localStorage.setItem('selectedDishes', JSON.stringify(idsToStore));
-        } catch (e) {
-            console.error("Ошибка при сохранении данных в localStorage", e);
-        }
-    }
-    
-    /**
-     * Удаляет блюдо из заказа и обновляет UI.
-     */
-    function removeDish(category) {
-        selectedDishes[category] = null;
-        saveSelectedDishes();
-        
-        // Перерендеринг всего
-        renderOrderComposition();
-        updateOrderSummary();
+    return payload;
+  }
+
+  // ✅ СОЗДАНИЕ ЗАКАЗА В API
+  async function createOrder(e) {
+    e.preventDefault();
+
+    if (API_KEY === "YOUR_API_KEY") {
+      alert("Вставь свой API_KEY в js_files/order_script.js");
+      return;
     }
 
-    // ----------------------------------------------------
-    // 2. Рендеринг и логика страницы "Оформить заказ"
-    // ----------------------------------------------------
-
-    /**
-     * Создает HTML-карточку блюда для страницы "Оформить заказ".
-     */
-    function createOrderDishCard(dish) {
-        const foodCard = document.createElement('div');
-        foodCard.className = 'food_card selected'; // Все выбранные
-        foodCard.setAttribute('data-dish-id', dish.id);
-        foodCard.setAttribute('data-category', dish.category);
-        
-        foodCard.innerHTML = `
-            <img src="${dish.image}" alt="${dish.name}">
-            <section>
-                <p>${dish.name}</p>
-                <p>${dish.price}₽</p>
-                <p style="font-size: 0.9em; font-style: italic;">${dish.count}</p>
-            </section>
-            <a class="add_to_lunch_button">Удалить</a>
-        `;
-        
-        foodCard.querySelector('.add_to_lunch_button').addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation(); 
-            removeDish(dish.category);
-        });
-        
-        return foodCard;
+    const validationError = window.checkComboValidity ? window.checkComboValidity(selectedDishes) : "Ошибка валидации";
+    if (validationError !== null) {
+      alert(`Некорректный заказ: ${validationError}`);
+      return;
     }
 
+    const payload = buildOrderPayload();
 
-    /**
-     * Рендерит список выбранных блюд в разделе "Состав заказа".
-     */
-    function renderOrderComposition() {
-        dishesListContainer.innerHTML = '';
-        let dishCount = 0;
-        
-        // Перебираем категории в нужном порядке
-        const orderedCategories = ['soup', 'main_dish', 'starter', 'drink', 'dessert', 'additive'];
-
-        orderedCategories.forEach(category => {
-            const dish = selectedDishes[category];
-            if (dish) {
-                const card = createOrderDishCard(dish);
-                dishesListContainer.appendChild(card);
-                dishCount++;
-            }
-        });
-
-        if (dishCount === 0) {
-            emptyOrderMessage.style.display = 'block';
-        } else {
-            emptyOrderMessage.style.display = 'none';
-        }
+    // базовая проверка обязательных полей
+    const required = ["full_name","email","phone","delivery_address","delivery_type","drink_id"];
+    for (const k of required) {
+      if (!payload[k]) {
+        alert(`Не заполнено обязательное поле: ${k}`);
+        return;
+      }
+    }
+    if (payload.delivery_type === "by_time" && !payload.delivery_time) {
+      alert("Укажи delivery_time (HH:MM) для доставки ко времени");
+      return;
     }
 
+    submitButton.disabled = true;
+    submitButton.textContent = "Отправка…";
 
-    /**
-     * Обновляет HTML-код раздела "Ваш заказ" и пересчитывает стоимость.
-     */
-    function updateOrderSummary() {
-        let totalCost = 0;
-        const categoryTitles = {
-            soup: 'Суп',
-            main_dish: 'Главное блюдо',
-            starter: 'Салат/стартер',
-            drink: 'Напиток',
-            dessert: 'Десерт',
-            additive: 'Добавки'
-        };
+    try {
+      const created = await fetchJson(withKey(ORDERS_URL), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-        let summaryHTML = '';
-        const orderedCategories = ['soup', 'main_dish', 'starter', 'drink', 'dessert', 'additive'];
-        
-        orderedCategories.forEach(category => {
-            const dish = selectedDishes[category];
-            const title = categoryTitles[category];
-            
-            summaryHTML += `<p style="font-weight: bold; margin-top: 10px;">${title}</p>`;
-            
-            if (dish) {
-                summaryHTML += `<p>${dish.name} ${dish.price}₽</p>`;
-                totalCost += dish.price;
-            } else {
-                let emptyMessage = category === 'drink' ? 'Напиток не выбран' : (category === 'main_dish' ? 'Блюдо не выбрано' : 'Не выбран');
-                summaryHTML += `<p style="font-style: italic;">${emptyMessage}</p>`;
-            }
-        });
+      alert("Заказ успешно создан!");
 
-        summaryHTML += `
-            <p style="font-weight: bold; margin-top: 20px;">Стоимость заказа</p>
-            <p style="font-size: 1.2em; font-weight: bold;">${totalCost}₽</p>
-        `;
-
-        orderSummaryElement.innerHTML = summaryHTML;
-        
-        // Валидация для кнопки отправки
-        checkFormValidity();
+      // очищаем выбранные блюда и переводим в историю
+      localStorage.removeItem("selectedDishes");
+      window.location.href = "../html_files/orders.html";
+    } catch (err) {
+      alert(`Ошибка создания заказа: ${err.message}`);
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Отправить";
     }
-    
-    /**
-     * Проверяет валидность комбо и включает/отключает кнопку отправки.
-     */
-    function checkFormValidity() {
-        // Используем функцию проверки комбо из script.js
-        const validationError = window.checkComboValidity ? window.checkComboValidity(selectedDishes) : 'Ошибка валидации (JS)';
-        
-        if (validationError === null) {
-            submitButton.disabled = false;
-            submitButton.textContent = 'Отправить';
-        } else {
-            submitButton.disabled = true;
-            submitButton.textContent = `Отправить (Некорректный заказ: ${validationError})`;
-        }
-    }
+  }
 
+  async function initOrderPage() {
+    allDishesData = await fetchJson(DISHES_URL);
 
-    // ----------------------------------------------------
-    // 3. Загрузка и инициализация
-    // ----------------------------------------------------
+    restoreSelectedDishes();
+    renderOrderComposition();
+    updateOrderSummary();
 
-    /**
-     * Асинхронно загружает данные о блюдах с API.
-     */
-    async function loadAllDishesData() {
-        try {
-            const response = await fetch(API_URL);
-            if (!response.ok) {
-                throw new Error(`Ошибка HTTP: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Ошибка при загрузке блюд:', error);
-            alert('Не удалось загрузить данные о блюдах с сервера. Проверьте запуск через локальный сервер.');
-            return []; 
-        }
-    }
+    orderForm.addEventListener('submit', createOrder);
+  }
 
-    /**
-     * Восстанавливает выбранные блюда из localStorage.
-     */
-    function restoreSelectedDishes() {
-        const selectedIds = loadSelectedDishIds();
-        
-        // Очищаем текущий выбор
-        for (const cat in selectedDishes) {
-            selectedDishes[cat] = null;
-        }
-
-        // Восстанавливаем объекты блюд по ID из allDishesData
-        allDishesData.forEach(dish => {
-            const category = dish.category ? dish.category.toLowerCase() : ''; 
-            if (selectedIds[category] === dish.id) {
-                selectedDishes[category] = dish;
-            }
-        });
-    }
-
-    /**
-     * Основная функция инициализации страницы.
-     */
-    async function initOrderPage() {
-        // Шаг 1: Загрузка всех данных с API
-        allDishesData = await loadAllDishesData();
-        
-        if (allDishesData.length > 0) {
-            // Шаг 2: Восстановление выбранных блюд
-            restoreSelectedDishes(); 
-
-            // Шаг 3: Рендеринг и обновление сводки
-            renderOrderComposition();
-            updateOrderSummary();
-        } 
-        
-        // Шаг 4: Настройка обработчика формы
-        orderForm.addEventListener('submit', (e) => {
-            const validationError = window.checkComboValidity ? window.checkComboValidity(selectedDishes) : 'Ошибка валидации (JS)';
-            
-            if (validationError) {
-                e.preventDefault(); 
-                alert(`Ошибка заказа: ${validationError}`);
-            } else {
-                // Если валидно, форма отправляется на https://httpbin.org/post
-                console.log("Комбо валидно, форма отправляется.");
-            }
-        });
-    }
-
-    initOrderPage();
-
+  initOrderPage();
 });
