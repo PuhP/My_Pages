@@ -1,0 +1,159 @@
+/* order_form.css */
+
+/* ----------------------------------------------------
+ * СТИЛИ ДЛЯ STICKY ПАНЕЛИ (на странице craft_a_lunch.html)
+ * ---------------------------------------------------- */
+.sticky-panel {
+    position: sticky; /* Главное требование ЛР */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Чтобы была над контентом */
+    background-color: rgba(75, 39, 4, 0.95); /* Темный фон */
+    padding: 10px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    color: rgb(245, 218, 218);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.sticky-panel .button {
+    /* Стили кнопки */
+    text-decoration: none;
+    background-color: rgb(231, 43, 43); 
+    border-color: rgb(245, 218, 218);
+    color: rgb(245, 218, 218);
+    padding: 10px 20px;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+}
+
+.sticky-panel .button:hover {
+    background-color: rgb(255, 60, 60);
+}
+
+.sticky-panel .button.disabled {
+    background-color: #888;
+    cursor: not-allowed;
+    pointer-events: none; /* Полное отключение клика */
+}
+
+/* ----------------------------------------------------
+ * СТИЛИ ДЛЯ СТРАНИЦЫ ОФОРМЛЕНИЯ ЗАКАЗА (order_form.html)
+ * ---------------------------------------------------- */
+
+.order-page-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Состав заказа (1) и Форма (2) */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: rgb(133, 71, 7);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.order-composition {
+    background-color: rgb(196, 111, 15);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.order-composition h2 {
+    margin-top: 0;
+    background-color:rgb(75, 39, 4); 
+}
+
+#dishes_list_container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Специальные стили для карточек блюд на странице оформления */
+.order-composition .food_card {
+    /* Переопределяем стили карточки из craft_a_lunch.css */
+    width: 100%; 
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 10px;
+}
+
+.order-composition .food_card img {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    margin-right: 10px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.order-composition .food_card section {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.order-composition .add_to_lunch_button {
+    /* Кнопка "Удалить" */
+    background-color: rgb(231, 43, 43);
+    border-color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Форма оформления (правая часть) */
+.order-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background-color: rgb(196, 111, 15);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.summary-block {
+    background-color: rgb(211, 112, 0); 
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.input-block > div {
+    margin-bottom: 10px;
+}
+
+.form-buttons {
+    grid-column: 1 / span 2; /* Растягиваем кнопки на всю ширину */
+    text-align: right;
+    margin-top: 20px;
+}
+
+.form-buttons .button {
+    margin-left: 10px;
+}
+
+/* Адаптивность для страницы оформления */
+@media (max-width: 900px) {
+    .order-page-container {
+        grid-template-columns: 1fr; /* В одну колонку на планшетах/мобильных */
+    }
+    
+    .order-form-grid {
+        grid-template-columns: 1fr; /* Форма заказа также в одну колонку */
+    }
+}

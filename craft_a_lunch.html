@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css_files/craft_a_lunch.css">
+  <title>Food Construct</title>
+</head>
+
+<body>
+<header>
+  <h1>Food Construct</h1>
+  <nav>
+    <a href="../html_files/main_window.html"> О нас </a>
+    <a class="button_chosen"> Создать ланч </a>
+    <a href="../html_files/order_form.html"> Оформить заказ </a>
+    <a href="../html_files/orders.html"> Заказы </a>
+    <a href="#contacts"> Контакты </a>
+    <a href="../html_files/landing.html"> Лендинг </a>
+  </nav>
+</header>
+
+<section>
+  <h2> Choose a soup </h2>
+  <div class="filters-container" id="soup_filters"></div>
+</section>
+
+<section style="width: fit-content; justify-items: center; justify-self: center;">
+  <div class="grid_container" id="soup_container"></div>
+</section>
+
+
+<section>
+  <h2> Choose a salad or starter </h2>
+  <div class="filters-container" id="starter_filters"></div>
+</section>
+
+<section style="width: fit-content; justify-items: center; justify-self: center;">
+  <div class="grid_container" id="starter_container"></div>
+</section>
+
+<section>
+  <h2> Choose a drink </h2>
+  <div class="filters-container" id="drink_filters"></div>
+</section>
+
+<section style="width: fit-content; justify-items: center; justify-self: center;">
+  <div class="grid_container" id="drink_container"></div>
+</section>
+
+<section>
+  <h2> Choose a dessert </h2>
+  <div class="filters-container" id="dessert_filters"></div>
+</section>
+
+<section style="width: fit-content; justify-items: center; justify-self: center;">
+  <div class="grid_container" id="dessert_container"></div>
+</section>
+
+
+<section>
+  <h2>Доступные для заказа комбо</h2>
+
+  <div class="combos-container">
+
+    <!-- Комбо 1 -->
+    <div class="combo-item">
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/soap.png" alt="Суп"> 
+        <p>Суп</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/main_dish.png" alt="Главное блюдо"> 
+        <p>Главное</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/salad.png" alt="Салат"> 
+        <p>Салат</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/drink.png" alt="Напиток">
+        <p>Напиток</p>
+      </div>
+    </div>
+
+    <!-- Комбо 2 -->
+    <div class="combo-item">
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/soap.png" alt="Суп">
+        <p>Суп</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/main_dish.png" alt="Главное блюдо">
+        <p>Главное</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/drink.png" alt="Напиток">
+        <p>Напиток</p>
+      </div>
+    </div>
+
+    <!-- Комбо 3 -->
+    <div class="combo-item">
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/soap.png" alt="Суп">
+        <p>Суп</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/salad.png" alt="Салат">
+        <p>Салат</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/drink.png" alt="Напиток">
+        <p>Напиток</p>
+      </div>
+    </div>
+
+    <!-- Комбо 4 -->
+   <div class="combo-item">
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/main_dish.png" alt="Главное блюдо">
+        <p>Главное</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/salad.png" alt="Салат">
+        <p>Салат</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/drink.png" alt="Напиток">
+        <p>Напиток</p>
+      </div>
+    </div>
+
+    <!-- Комбо 5 -->
+    <div class="combo-item">
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/main_dish.png" alt="Главное блюдо">
+        <p>Главное</p>
+      </div>
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/drink.png" alt="Напиток">
+        <p>Напиток</p>
+      </div>
+    </div>
+
+    <!-- Десерт -->
+    <div class="combo-item">
+      <div class="combo-dish">
+        <img src="../recources/Images/foods/dessert.png" alt="Десерт">
+        <p>Десерт</p>
+      </div>
+      <p class="dessert-note">Можно добавить отдельно</p>
+    </div>
+
+  </div>
+</section>
+
+
+<div id="sticky_order_panel" class="sticky-panel" style="display: none;">
+  <div class="panel-content">
+    <p>Ваш заказ: <span id="order_current_cost">0₽</span></p>
+    <a id="checkout_link" href="../html_files/order_form.html" class="button">Перейти к оформлению</a>
+  </div>
+</div>
+
+<footer id="contacts">
+  <p> Call us: </p>
+  <p> +2 383 292 14 87 - Manager</p>
+  <p>All rights reserved.</p>
+</footer>
+
+<script src="../js_files/script.js"></script>
+</body>
+</html>

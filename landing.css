@@ -1,0 +1,13 @@
+.hero-gradient{
+  background: linear-gradient(135deg, rgba(255,156,43,.18), rgba(231,43,43,.12));
+}
+
+.feature-icon{
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(13,110,253,.12); /* bootstrap primary tint */
+  font-size: 22px;
+}

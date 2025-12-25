@@ -1,0 +1,272 @@
+@font-face {
+    font-family: 'Momo_Trust';
+    font-size: medium;
+    font-weight: normal;
+    font-style: light;
+    src: url('../fonts/Momo_Trust_Display/MomoTrustDisplay-Regular.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ScienceGothic';
+    src: url('../fonts/ScienceGothic/ScienceGothic.woff2') format('woff2');
+    font-display: swap;
+}
+
+html { scroll-behavior: smooth; }
+
+body { background-color: rgb(255, 156, 43); }
+
+h1 {
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: normal;
+    font-style: light;
+
+    text-align: center;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(133, 71, 7);
+    border-radius: 8px;
+    padding: 2px 7px;
+}
+
+h2 {
+    font-family: 'Momo_Trust', -apple-system, 'sans-serif';
+    font-optical-sizing: auto;
+    height: auto;
+    font-weight: normal;
+    font-style: light;
+    color: rgb(245, 218, 218);
+    margin: 10px;
+    background-color:rgb(75, 39, 4);
+    border-radius: 8px;
+    padding: 2px 7px;
+}
+
+h3 { color: rgb(75, 39, 4); }
+
+header { margin: 10px; }
+section { margin: 10px; }
+
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'ScienceGothic';
+    color: rgb(231, 43, 43);
+    margin: 5px;
+    background-color: rgb(245, 218, 218);
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.button_chosen {
+    background-color: rgb(75, 39, 4);
+    color: rgb(245, 218, 218);
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 10px;
+}
+
+.food_card {
+    background-color: rgb(245, 218, 218);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+    cursor: pointer;
+}
+
+.food_card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.food_card section {
+    border: 3px solid rgb(231, 43, 43);
+    box-shadow: 0 0 15px 7px rgba(231, 43, 43, 0.8);
+    text-align: center;
+    margin: 5px 0;
+    color: rgb(75, 39, 4);
+}
+
+/* ✅ FIX: чтобы название/цена были видны в карточках (p был белым из-за глобального правила) */
+.food_card section p{
+    color: rgb(75, 39, 4);
+    margin: 6px 0;
+}
+
+.add_to_lunch_button {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    background-color: rgb(250, 141, 16);
+    border-radius: 20px;
+    border-color: white;
+    padding: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+}
+
+.create_order {
+    background-color:  rgb(196, 111, 15);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+    margin: 15px;
+    padding: 15px;
+}
+
+textarea {
+    background-color:rgb(134, 78, 13);
+    border-radius: 20px;
+    padding: 10px;
+    color: rgb(245, 218, 218);
+}
+
+::placeholder { color: rgb(245, 218, 218); opacity: 1; }
+
+.text_input {
+    color: rgb(245, 218, 218);
+    background-color: rgb(255, 140, 64);
+    border-radius: 20px;
+    padding: 10px;
+    border-color: rgb(255, 140, 64);
+    outline: none;
+}
+
+.button {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    background-color: rgb(250, 141, 16);
+    border-radius: 20px;
+    border-color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.button:hover { background-color: rgb(231, 43, 43); }
+
+footer {
+    text-align: right;
+    padding: 30px;
+    min-height: 200px;
+    background-color: black;
+    border-radius: 8px;
+}
+
+p { color: rgb(245, 218, 218); }
+
+/* --- СТИЛИ ФИЛЬТРОВ --- */
+
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0 20px 0;
+    padding: 10px;
+    background-color: rgb(75, 39, 4);
+    border-radius: 8px;
+}
+
+.filter-button {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'ScienceGothic';
+    color: rgb(245, 218, 218);
+    margin: 5px;
+    background-color: rgb(250, 141, 16);
+    border-radius: 15px;
+    border-color: rgb(245, 218, 218);
+    padding: 5px 15px;
+    border-style: solid;
+    border-width: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.filter-button.active {
+    background-color: rgb(231, 43, 43);
+    border-color: rgb(255, 255, 255);
+}
+
+.filter-button:hover {
+    background-color: rgb(231, 43, 43);
+    border-color: rgb(245, 218, 218);
+}
+
+/* --- СТИЛИ КОМБО --- */
+.combos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.combo-item {
+    background-color: rgba(211, 112, 0, 0.733);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.644);
+}
+
+.combo-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.combo-dish img {
+    width: 60px;
+    height: 60px;
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.combo-dish p { font-size: 1em; margin-top: 5px; }
+
+.combo-dish:hover img { transform: translateY(-5px) scale(1.1); }
+
+.dessert-note {
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Адаптивность */
+@media (max-width: 900px) { .combos-container { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 550px) { .combos-container { grid-template-columns: 1fr; } }
+
+@media (max-width: 1200px) { .grid_container { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 800px) { .grid_container { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .grid_container { grid-template-columns: 1fr; } }
+
+.food_card.selected .add_to_lunch_button {
+    background-color: rgb(231, 43, 43);
+    border-color: rgb(231, 43, 43);
+}

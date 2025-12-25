@@ -1,0 +1,198 @@
+.orders-page{
+  margin: 10px;
+}
+
+.orders-head{
+  background-color: rgb(133, 71, 7);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.orders-subtitle{
+  color: rgb(245, 218, 218);
+  margin: 0 10px 10px 10px;
+}
+
+.orders-list-wrap{
+  background-color: rgb(133, 71, 7);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.orders-info{
+  color: rgb(245, 218, 218);
+  margin: 10px;
+}
+
+.orders-info--error{
+  background: rgba(0,0,0,.2);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.orders-table{
+  display: grid;
+  gap: 8px;
+  margin: 10px;
+}
+
+.orders-row{
+  display: grid;
+  grid-template-columns: 60px 180px 1fr 140px 270px 190px;
+  gap: 10px;
+  align-items: center;
+  background-color: rgb(196, 111, 15);
+  border-radius: 8px;
+  padding: 10px;
+  color: rgb(75, 39, 4);
+}
+
+.orders-row--head{
+  background-color: rgb(75, 39, 4);
+  color: rgb(245, 218, 218);
+  font-weight: bold;
+}
+
+.orders-actions{
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.icon-btn{
+  border: 2px solid rgb(245, 218, 218);
+  background-color: rgb(250, 141, 16);
+  color: rgb(245, 218, 218);
+  border-radius: 12px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.icon-btn:hover{
+  background-color: rgb(231, 43, 43);
+}
+
+/* Toast */
+.toast{
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  max-width: 320px;
+  background: rgb(245, 218, 218);
+  color: rgb(75, 39, 4);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+  z-index: 2000;
+  font-family: 'Momo_Trust', sans-serif;
+}
+
+/* Modal */
+.modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+  padding: 14px;
+}
+
+.modal{
+  width: min(720px, 96vw);
+  background-color: rgb(245, 218, 218);
+  color: rgb(75, 39, 4);
+  border-radius: 14px;
+  padding: 16px;
+  position: relative;
+}
+
+.modal__title{
+  margin: 0 0 10px 0;
+}
+
+.modal__close{
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 26px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgb(75, 39, 4);
+}
+
+.modal__body{
+  background: rgba(0,0,0,.05);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.modal__actions{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.edit-form{
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.field{
+  display: grid;
+  gap: 6px;
+}
+
+.field span{
+  font-weight: bold;
+}
+
+#edit_comment{
+  background-color: rgb(134, 78, 13);
+  border-radius: 12px;
+  padding: 10px;
+  color: rgb(245, 218, 218);
+  border: 1px solid rgba(0,0,0,.15);
+}
+
+.hint{
+  color: rgba(75,39,4,.8);
+}
+
+/* Адаптив */
+@media (max-width: 1050px){
+  .orders-row{
+    grid-template-columns: 50px 160px 1fr 120px 240px 170px;
+  }
+}
+
+@media (max-width: 850px){
+  .orders-row{
+    grid-template-columns: 1fr;
+  }
+  .orders-row > div:nth-child(1)::before{ content: "#: "; font-weight: bold; }
+  .orders-row > div:nth-child(2)::before{ content: "Дата: "; font-weight: bold; }
+  .orders-row > div:nth-child(3)::before{ content: "Состав: "; font-weight: bold; }
+  .orders-row > div:nth-child(4)::before{ content: "Стоимость: "; font-weight: bold; }
+  .orders-row > div:nth-child(5)::before{ content: "Доставка: "; font-weight: bold; }
+  .orders-actions{ justify-content: flex-start; }
+}
+
+/* ===== ТЁМНЫЙ ТЕКСТ В МОДАЛКЕ "ПОДРОБНЕЕ" ===== */
+
+#modal_view .modal__body,
+#modal_view .modal__body p,
+#modal_view .modal__body b {
+  color: rgb(75, 39, 4); /* тёмно-коричневый */
+}
+
+#modal_view .modal__body hr {
+  border: none;
+  border-top: 1px solid rgba(75, 39, 4, 0.4);
+}
